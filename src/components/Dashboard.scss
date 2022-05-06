@@ -9,3 +9,27 @@
   margin: 10px;
   padding: 10px;
 }
+.center {
+  text-align: center;
+}
+
+.body-item{
+  width: 100%;
+}
+.grid-100{
+  width: 100%;
+}
+.item-divider {
+  width: 1px;
+  background-color: lightgrey;
+  height: 100%;
+}
+.icon{
+  display: flex;
+  align-content: center;
+}
+.icon-content{
+  text-align: center;
+  margin: auto;
+  color: #666;
+}
