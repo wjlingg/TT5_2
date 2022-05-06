@@ -8,7 +8,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import CloseIcon from "@mui/icons-material/Close";
+import CloseIcon from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import { ButtonBlue } from "../Globals";
 

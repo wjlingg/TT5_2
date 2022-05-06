@@ -11,9 +11,11 @@
     margin-right: auto;
     margin-left: auto;
   }
+
   .flex {
     display: flex;
   }
+
   .card {
     position: relative;
     display: flex;
@@ -27,7 +29,8 @@
     border-radius: 10px;
     margin: auto;
   }
-  .card > hr {
+
+  .card>hr {
     margin-right: 0;
     margin-left: 0;
   }
@@ -42,12 +45,7 @@
     font-size: 24px;
     margin-bottom: 12px;
   }
-  .subtext {
-    font-weight: 700;
-    font-size: 16px;
-    color: #000000;
-    margin-bottom: 40px;
-  }
+
   .form {
     text-align: left;
   }
@@ -62,9 +60,11 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+
     .input {
       width: 100%;
     }
+
     .errorMessage {
       color: red;
     }
@@ -89,6 +89,7 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
+
   .submitBtn {
     background-color: #ff5666;
     text-transform: none;
@@ -115,6 +116,7 @@
     color: white;
     width: 100%;
   }
+
   .loading {
     position: relative;
     text-align: center;
@@ -129,12 +131,15 @@
     background-color: #ff172d;
     box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.2);
   }
+
   a {
     text-decoration: none;
   }
+
   .form-control.password {
     margin-bottom: 0;
   }
+
   .forgetPassword {
     .btn {
       color: #2964f5;
@@ -144,6 +149,7 @@
       margin-bottom: 40px;
     }
   }
+
   //   Media Queries
   @media only screen and (max-width: 990px) {
     .container {
@@ -155,6 +161,7 @@
       margin-right: 30px;
       padding-top: 40px;
     }
+
     .card {
       display: flex !important;
       width: 100%;
