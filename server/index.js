@@ -81,11 +81,11 @@ app.get("/user", (req, res) => {
   });
 });
 
-app.get("/login", (req, res) => {
-  console.log(req);
-
+app.post("/login", (req, res) => {
+  console.log(req.body);
+  res.status(200).send(req.body.data);
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("Server is running");
 });

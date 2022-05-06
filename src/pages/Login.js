@@ -57,17 +57,15 @@ export default class Login extends BasePageComponent {
     let data = this.state;
     console.log(data);
 
-    Axios.get("http://localhost:3000/login", data).then((result) => {
-      console.log(result);
+    Axios.post("http://localhost:3001/login", data).then((result) => {
       this.setState({
         success: true,
         error: false,
         message: "Login Successful",
       });
-      window.localStorage.setItem(
-        "@userdata",
-        JSON.stringify(result.data.data)
-      );
+      console.log("My result", result.data);
+
+      window.localStorage.setItem("@userdata", JSON.stringify(result.data));
       this.moveNext("/Home");
     });
   };
