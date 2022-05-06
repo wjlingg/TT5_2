@@ -61,8 +61,9 @@ app.get("/category", (req, res) => {
   });
 });
 
+// return expenses by id
 app.get("/expense", (req, res) => {
-  db.query("SELECT * FROM expense", (error, result) => {
+  db.query("SELECT * FROM expense where id=" +req.body.id , (error, result) => {
     if (error) {
       console.log(error);
     } else {
@@ -71,6 +72,8 @@ app.get("/expense", (req, res) => {
   });
 });
 
+
+// return details of a single user
 app.get("/user", (req, res) => {
   db.query("SELECT * FROM user where id=" +req.body.id , (error, result) => {
     if (error) {
@@ -91,8 +94,9 @@ app.delete("/expense", (req, res) => {
   });
 });
 
+// Update expense row
 app.put("/expense", (req, res) => {
-  db.query("UPDATE expense SET name= '"+req.body.name+"', description= '"+req.body.description+ "', amount="+50000 + " WHERE id=" +req.body.id , (error, result) => {
+  db.query("UPDATE expense SET name= '"+req.body.name+"', description= '"+req.body.description+ "', amount="+req.body.amount + " WHERE id=" +req.body.id , (error, result) => {
     if (error) {
       console.log(error);
     } else {
@@ -101,28 +105,39 @@ app.put("/expense", (req, res) => {
   });
 });
 
-// app.post("/expense", (req, res) => {
-//   // Replace the variables with the database data variables
-//   // const currentDate = new Date();
-//   // const timestamp = currentDate.getTime();
+// Update single expense
+app.put("/expense", (req, res) => {
+  db.query("UPDATE expense SET  amount="+req.body.amount + " WHERE id=" +req.body.id , (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.status(200).send(result);
+    }
+  });
+});
 
-//   const { name, description, amount } = req.body;
-//   if ( !name || !description || !amount) {
-//     res.status(400).send("Error: missing data");
-//   } else {
-//     db.query(
-//       "INSERT INTO expense (name, description, amount) VALUES ( ?, ?, ?)",
-//             [name, description, amount],
-//       (error, result) => {
-//         if (error) {
-//           console.log(error);
-//         } else {
-//           res.send("Data inserted into table");
-//         }
-//       }
-//     );
-//   }
-// });
+app.post("/expense", (req, res) => {
+  // Replace the variables with the database data variables
+  // const currentDate = new Date();
+  // const timestamp = currentDate.getTime();
+
+  const { name, description, amount } = req.body;
+  if ( !id, !project_id, !name || !description || !amount) {
+    res.status(400).send("Error: missing data");
+  } else {
+    db.query(
+      "INSERT INTO expense (id,project_id,name, description, amount) VALUES ( ?,?,?, ?, ?)",
+            [id,project_id,name, description, amount],
+      (error, result) => {
+        if (error) {
+          console.log(error);
+        } else {
+          res.send("Data inserted into table");
+        }
+      }
+    );
+  }
+});
 
 
 app.listen(3001, () => {
