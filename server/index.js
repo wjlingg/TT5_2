@@ -81,7 +81,7 @@ app.get("/user", (req, res) => {
   });
 });
 
-// app.delete("/expense/:id", (req, res) => {
+// app.delete("/expense", (req, res) => {
 //   db.query("DELETE FROM expense WHERE id="+req.body.id+"", (error, result) => {
 //     if (error) {
 //       console.log(error);
@@ -91,15 +91,15 @@ app.get("/user", (req, res) => {
 //   });
 // });
 
-// app.put("/expense/:id", (req, res) => {
-//   db.query("UPDATE items SET name='"+req.body.name+"', description='"+req.body.description +"' WHERE budget="+req.params.budget , (error, result) => {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       res.status(200).send(result);
-//     }
-//   });
-// });
+app.put("/expense", (req, res) => {
+  db.query("UPDATE expense SET name= '"+req.body.name+"', description= '"+req.body.description+ "', amount="+50000 + " WHERE id=" +req.body.id , (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.status(200).send(result);
+    }
+  });
+});
 
 // app.post("/expense/:id", (req, res) => {
 //   // Replace the variables with the database data variables
