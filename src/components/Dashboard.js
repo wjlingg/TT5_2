@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Axios from "axios";
+
 import { Grid } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import IconButton from "@mui/material/IconButton";
@@ -10,33 +12,23 @@ import "./Dashboard.scss";
 // Current Task: Users must be able to view all projects under current user
 
 // TODO: Use axios and pull data from Flask endpoint that's connected database later
-const dummyData = [
-  {
-    id: 1,
-    user_id: 4,
-    name: "RTF",
-    description: "Realtime Face Recognition",
-    budget: 12000,
-  },
-  {
-    id: 2,
-    user_id: 1,
-    name: "SWT",
-    description: "Smart Watch Tracker",
-    budget: 80000,
-  },
-  {
-    id: 3,
-    user_id: 2,
-    name: "ULS",
-    description: "Upgrade Legacy System",
-    budget: 11000,
-  },
-];
 
 // user parameter contains user information, display data matching user info
-function Dashboard(user) {
-  const [projectData, setProjectData] = useState(dummyData);
+function Dashboard() {
+  // Test data
+  const userData = { userID: 1, userName: "Hiyoshi" };
+
+  const [projectData, setProjectData] = useState([]);
+
+  const getProjects = () => {
+    Axios.post("http://localhost:3001/project", userData).then((result) => {
+      setProjectData(result.data);
+    });
+  };
+
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   const displayData = projectData.map((currentProject) => {
     const { id, user_id, name, description, budget } = currentProject;
@@ -86,9 +78,10 @@ function Dashboard(user) {
 
   return (
     <>
-      <div>Sample: Current userID: 1</div>
+      <div>Sample: Current userID: {userData.userID}</div>
       <div className="dashboard">
         <div>{displayData}</div>
+        <button onClick={() => getProjects()}>Get Data</button>
       </div>
     </>
   );
