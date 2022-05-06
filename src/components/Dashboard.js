@@ -65,22 +65,22 @@ function Dashboard() {
           <Grid item className="grid-100">
             <div className="body-item">
               <Grid container className="grid-100">
-                <Grid item xs={12} md={1}>
+                <Grid item xs={12} md={2}>
                   <div className="name">{name}</div>
                 </Grid>
-                <Grid item xs={12} md={1}>
+                <Grid item xs={12} md={4}>
                   <div className="description">{description}</div>
                 </Grid>
                 <Grid item xs={12} md={2}>
                   <div className="amount">{amount}</div>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={1}>
                   <div className="created_by">{created_by}</div>
                 </Grid>
-                <Grid item xs={12} md={2}>
+                <Grid item xs={12} md={1}>
                   <div className="updated_by">{updated_by}</div>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={2}>
                   {/* <div className="item-divider"></div> */}
                   <div className="icon-content">
                     <IconButton>
