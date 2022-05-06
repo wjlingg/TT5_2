@@ -10,6 +10,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
 import { ButtonRed } from "../Globals";
+import Axios from "axios";
 
 export default class Login extends BasePageComponent {
   constructor(props) {
@@ -53,11 +54,24 @@ export default class Login extends BasePageComponent {
       return;
     }
 
-    let data= this.state;
+    let data = this.state;
     console.log(data);
 
-    //Do api call and response here. 
+    Axios.get("http://localhost:3000/login", data).then((result) => {
+      console.log(result);
+      this.setState({
+        success: true,
+        error: false,
+        message: "Login Successful",
+      });
+      window.localStorage.setItem(
+        "@userdata",
+        JSON.stringify(result.data.data)
+      );
+      this.moveNext("/Home");
+    });
   };
+
   render() {
     return super.render(
       <div className="login">
