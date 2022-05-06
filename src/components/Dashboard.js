@@ -21,6 +21,7 @@ function Dashboard() {
   const [projectData, setProjectData] = useState([]);
   const [expenseData, setExpenseData] = useState([]);
   const [showExpense, setShowExpense] = useState(false);
+  const [editExpense, setEditExpense] = useState(false);
 
   const getProjects = () => {
     Axios.post("http://localhost:3001/project", userData).then((result) => {
@@ -34,10 +35,6 @@ function Dashboard() {
       setExpenseData(result.data);
       console.log("Retrieved Expense Data");
     });
-  };
-
-  const checkExpense = () => {
-    console.log(expenseData);
   };
 
   useEffect(() => {
@@ -83,7 +80,12 @@ function Dashboard() {
                 <Grid item xs={12} md={2}>
                   {/* <div className="item-divider"></div> */}
                   <div className="icon-content">
-                    <IconButton>
+                    <IconButton
+                      onClick={() => {
+                        setEditExpense(!editExpense);
+                        console.log(editExpense);
+                      }}
+                    >
                       <EditIcon />
                     </IconButton>
 
@@ -113,10 +115,10 @@ function Dashboard() {
                   <div className="id">{id}</div>
                 </Grid>
                 <Grid item xs={12} md={1}>
-                  <div className="userId">{user_id}</div>
+                  <div className="user_id">{user_id}</div>
                 </Grid>
                 <Grid item xs={12} md={2}>
-                  <div className="userName">{name}</div>
+                  <div className="name">{name}</div>
                 </Grid>
                 <Grid item xs={12} md={3}>
                   <div className="description">{description}</div>
