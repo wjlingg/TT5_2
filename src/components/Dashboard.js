@@ -34,10 +34,10 @@ const dummyData = [
   },
 ];
 
-view(id){
-  console.log(id);
+// view(id){
+//   console.log(id);
 
-}
+// }
 
 // user parameter contains user information, display data matching user info
 function Dashboard(user) {
@@ -74,13 +74,13 @@ function Dashboard(user) {
                 <Grid item xs={12} md={3}>
                   {/* <div className="item-divider"></div> */}
                   <div className="icon-content">
-                    <IconButton onClick={this.view.bind(this,id)}>
+                    <IconButton>
                       <VisibilityIcon />
                     </IconButton>
-                    <IconButton onClick={() => this.edit(id)}>
+                    <IconButton>
                       <EditIcon />
                     </IconButton>
-                    <IconButton onClick={() => this.delete(id)}>
+                    <IconButton>
                       <DeleteIcon />
                     </IconButton>
                   </div>

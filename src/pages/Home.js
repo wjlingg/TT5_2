@@ -12,7 +12,7 @@ export default class Home extends BasePageComponent {
   render() {
     return super.render(
       <div className="Home">
-        <Dashboard />
+        <Dashboard/>
       </div>
     );
   }
