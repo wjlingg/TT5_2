@@ -6,7 +6,7 @@ const cors = require("cors");
 app.use(cors()); // Remove later when using AWS DB
 app.use(express.json()); // Middleware
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "localhost:3000");
+  res.header("Access-Control-Allow-Origin", "localhost:3001");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -92,9 +92,10 @@ app.post("/login", (req, res) => {
   console.log(req.body);
   const username = req.body.username;
   const password = req.body.password;
+  console.log(username);
 
   db.query(
-    "SELECT username, password FROM user WHERE username = " + username + "",
+    "SELECT username, password FROM user WHERE username = '" + username +"'",
     (error, result) => {
       if (error) {
         console.log(error);
