@@ -21,25 +21,25 @@ const db = mysql.createConnection({
 // Axios.post("http://localhost:3001/create", { body data })
 
 // req parameter will contain whatever "body data" i sent to the back-end.
-app.post("/create", (req, res) => {
-  // Replace the variables with the database data variables
-  const { name, age, country, position, salary } = req.body;
-  if (!name || !age || !country || !position || !salary) {
-    res.status(400).send("Error: missing data");
-  } else {
-    db.query(
-      "INSERT INTO employees (name, age, country, position, salary) VALUES (?, ?, ?, ?, ?)",
-      [name, age, country, position, salary],
-      (error, result) => {
-        if (error) {
-          console.log(error);
-        } else {
-          res.send("Data inserted into table");
-        }
-      }
-    );
-  }
-});
+// app.post("/expense", (req, res) => {
+//   // Replace the variables with the database data variables
+//   const { id, user_id, name, description, budget } = req.body;
+//   if (!id || !user_id || !name || !description || !budget) {
+//     res.status(400).send("Error: missing data");
+//   } else {
+//     db.query(
+//       "INSERT INTO employees (id, user_id, name, description, budget) VALUES (?, ?, ?, ?, ?)",
+//       [name, age, country, position, salary],
+//       (error, result) => {
+//         if (error) {
+//           console.log(error);
+//         } else {
+//           res.send("Data inserted into table");
+//         }
+//       }
+//     );
+//   }
+// });
 
 app.get("/project", (req, res) => {
   db.query("SELECT * FROM project", (error, result) => {
@@ -72,7 +72,7 @@ app.get("/expense", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  db.query("SELECT * FROM user", (error, result) => {
+  db.query("SELECT * FROM user where id=" +req.body.id , (error, result) => {
     if (error) {
       console.log(error);
     } else {
@@ -80,6 +80,46 @@ app.get("/user", (req, res) => {
     }
   });
 });
+
+// app.delete("/expense/:id", (req, res) => {
+//   db.query("DELETE FROM expense WHERE id="+req.body.id+"", (error, result) => {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       res.status(200).send(result);
+//     }
+//   });
+// });
+
+// app.put("/expense/:id", (req, res) => {
+//   db.query("UPDATE items SET name='"+req.body.name+"', description='"+req.body.description +"' WHERE budget="+req.params.budget , (error, result) => {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       res.status(200).send(result);
+//     }
+//   });
+// });
+
+// app.post("/expense/:id", (req, res) => {
+//   // Replace the variables with the database data variables
+//   const { id, user_id, name, description, budget } = req.body;
+//   if (!id || !user_id || !name || !description || !budget) {
+//     res.status(400).send("Error: missing data");
+//   } else {
+//     db.query(
+//       "INSERT INTO expenses (id, user_id, name, description, budget) VALUES ("id + "," + user_id + "," +  name + ","+ description + "," + budget+")",
+//       (error, result) => {
+//         if (error) {
+//           console.log(error);
+//         } else {
+//           res.send("Data inserted into table");
+//         }
+//       }
+//     );
+//   }
+// });
+
 
 app.listen(3001, () => {
   console.log("Server is running");
