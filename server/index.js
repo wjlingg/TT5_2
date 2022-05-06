@@ -81,15 +81,15 @@ app.get("/user", (req, res) => {
   });
 });
 
-// app.delete("/expense", (req, res) => {
-//   db.query("DELETE FROM expense WHERE id="+req.body.id+"", (error, result) => {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       res.status(200).send(result);
-//     }
-//   });
-// });
+app.delete("/expense", (req, res) => {
+  db.query("DELETE FROM expense WHERE id="+req.body.id+"", (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.status(200).send(result);
+    }
+  });
+});
 
 app.put("/expense", (req, res) => {
   db.query("UPDATE expense SET name= '"+req.body.name+"', description= '"+req.body.description+ "', amount="+50000 + " WHERE id=" +req.body.id , (error, result) => {
@@ -101,14 +101,18 @@ app.put("/expense", (req, res) => {
   });
 });
 
-// app.post("/expense/:id", (req, res) => {
+// app.post("/expense", (req, res) => {
 //   // Replace the variables with the database data variables
-//   const { id, user_id, name, description, budget } = req.body;
-//   if (!id || !user_id || !name || !description || !budget) {
+//   // const currentDate = new Date();
+//   // const timestamp = currentDate.getTime();
+
+//   const { name, description, amount } = req.body;
+//   if ( !name || !description || !amount) {
 //     res.status(400).send("Error: missing data");
 //   } else {
 //     db.query(
-//       "INSERT INTO expenses (id, user_id, name, description, budget) VALUES ("id + "," + user_id + "," +  name + ","+ description + "," + budget+")",
+//       "INSERT INTO expense (name, description, amount) VALUES ( ?, ?, ?)",
+//             [name, description, amount],
 //       (error, result) => {
 //         if (error) {
 //           console.log(error);
