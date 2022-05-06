@@ -1,0 +1,23 @@
+.MenuDrawer {
+  .logo-container {
+    margin-top: 10px;
+    img{
+      width: 40px;
+    }
+    .close-button {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+  }
+  .center {
+    text-align: center;
+  }
+  .logo {
+    width: 40%;
+  }
+  .login-text span {
+    color: #2964f5;
+    font-weight: 700;
+  }
+}

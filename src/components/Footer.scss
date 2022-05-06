@@ -1,0 +1,77 @@
+.Footer {
+  width: 100%;
+  height: 290px;
+  background: #fff;
+  .center {
+    text-align: center;
+  }
+  .top {
+    width: 100%;
+    height: 250px;
+    background: #fff;
+    .logo {
+      width: 100px;
+    }
+    .column {
+      width: 150px;
+      margin-top: 50px;
+      display: inline-block;
+      margin-right: 100px;
+      line-height: 25px;
+      vertical-align: top;
+      text-align: left;
+
+      .header-text {
+        font-family: Inter;
+        font-size: 14px;
+        color: #2964f5;
+        font-weight: 700;
+        text-align: left;
+        margin-bottom: 10px;
+      }
+      .sub-text {
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 400;
+        text-align: left;
+      }
+      .connect-icon {
+        display: inline-block;
+        margin-right: 10px;
+        img{
+            width: 40px;
+        }
+      }
+    }
+  }
+  .bottom {
+    width: 100%;
+    height: 40px;
+    background: #2964f5;
+    .copyright-text {
+      font-family: Inter;
+      color: #fff;
+      font-size: 14px;
+      padding-top: 10px;
+      margin-left: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 990px) {
+    height: auto;
+    .top {
+      height: auto;
+      margin-bottom: 30px;
+      text-align: left;
+      //
+      .column {
+        padding-left: 40px;
+      }
+    }
+    .bottom {
+      .copyright-text {
+        padding-left: 20px;
+      }
+    }
+  }
+}
