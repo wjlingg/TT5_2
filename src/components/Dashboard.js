@@ -34,11 +34,6 @@ const dummyData = [
   },
 ];
 
-// view(id){
-//   console.log(id);
-
-// }
-
 // user parameter contains user information, display data matching user info
 function Dashboard(user) {
   const [projectData, setProjectData] = useState(dummyData);
@@ -47,10 +42,6 @@ function Dashboard(user) {
     const { id, user_id, name, description, budget } = currentProject;
 
     return (
-      // <div className="dashboard-data" key={id}>
-      //   {id} {user_id} {name} {description} {budget}
-      // </div>
-
       <div className="dashboard-data" key={id}>
         <Grid container>
           <Grid item className="grid-100">
@@ -95,7 +86,7 @@ function Dashboard(user) {
 
   return (
     <>
-      <div>Display Data Test</div>
+      <div>Sample: Current userID: 1</div>
       <div className="dashboard">
         <div>{displayData}</div>
       </div>

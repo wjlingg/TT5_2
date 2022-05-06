@@ -42,6 +42,21 @@ app.post("/create", (req, res) => {
 });
 
 app.get("/project", (req, res) => {
+  const userid = [req.body.id];
+  db.query(
+    "SELECT * FROM project WHERE user_id = ?",
+    [req.body.id],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.status(200).send(result);
+      }
+    }
+  );
+});
+
+app.get("/project", (req, res) => {
   db.query("SELECT * FROM project", (error, result) => {
     if (error) {
       console.log(error);
@@ -81,6 +96,6 @@ app.get("/user", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("Server is running");
 });
