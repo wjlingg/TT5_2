@@ -19,43 +19,16 @@ export default class Edit extends BasePageComponent {
         super(props);
 
         this.state = {
-            add_Data: "",
+            edit_Data: "",
             isloading: false,
             message: "",
             items: [],
         };
     }
 
-    updateMessage(event) {
-        this.setState({
-            message: event.target.value,
-        });
-    }
-
-    handleClick() {
-        var items = this.state.items;
-
-        items.push(this.state.message);
-
-        this.setState({
-            items: items,
-            message: "",
-        });
-    }
-
     handleItemChanged(i, event) {
         var items = this.state.items;
         items[i] = event.target.value;
-
-        this.setState({
-            items: items,
-        });
-    }
-
-    handleItemDeleted(i) {
-        var items = this.state.items;
-
-        items.splice(i, 1);
 
         this.setState({
             items: items,
@@ -68,27 +41,27 @@ export default class Edit extends BasePageComponent {
                 <div className="container">
                     <div className="card">
                         <div className="card-body">
-                            <table className="add">
+                            <table className="edit">
 
 
                                 <div className="form">
                                     <div className="form-group">
-                                        <p className="title">Add New Business Expenses</p>
+                                        <p className="title">Edit Business Expenses</p>
 
                                         <label htmlFor="chooseProject">Choose your project</label>
                                         <div className="container_drop">
                                             <DropdownList />
                                         </div>
-                                        <label htmlFor="add_Data">Add your expenses</label>
+                                        <label htmlFor="add_Data">Edit your expenses</label>
                                         <FormControl className="form-control" variant="outlined">
                                             <OutlinedInput
-                                                id="add_Data"
-                                                type="add_Data"
-                                                name="add_Data"
+                                                id="edit_Data"
+                                                type="edit_Data"
+                                                name="edit_Data"
                                                 className="input"
                                                 variant="outlined"
                                                 fullWidth
-                                                value={this.state.add_Data}
+                                                value={this.state.edit_Data}
                                                 onChange={this.textChange}
                                             />
                                         </FormControl>
@@ -98,9 +71,9 @@ export default class Edit extends BasePageComponent {
                                             variant="contained"
                                             color="primary"
                                             className="submitBtn"
-                                            onClick={this.add_Data}
+                                            onClick={this.edit_Data}
                                         >
-                                            Add New Expense
+                                            Confirm Edit
                                         </ButtonRed>
                                     )}
                                     {this.state.isloading === true && (
@@ -111,7 +84,7 @@ export default class Edit extends BasePageComponent {
                                             disabled={true}
                                         >
                                             <CircularProgress className="loading" />
-                                            Add New Expense
+                                            Confirm Edit
                                         </ButtonRed>
                                     )}
                                 </div>
