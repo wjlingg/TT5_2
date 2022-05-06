@@ -16,10 +16,10 @@ export default class Login extends BasePageComponent {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      username: "",
       password: "",
       isloading: false,
-      errorEmail: "",
+      errorusername: "",
       errorPassword: "",
       success: false,
       error: false,
@@ -39,11 +39,11 @@ export default class Login extends BasePageComponent {
   };
   login = async () => {
     this.setState({ isloading: true });
-    if (this.state.email === "" || this.state.password === "") {
-      if (this.state.email === "") {
-        this.setState({ errorEmail: "Please enter an email." });
+    if (this.state.username === "" || this.state.password === "") {
+      if (this.state.username === "") {
+        this.setState({ errorusername: "Please enter an username." });
       } else {
-        this.setState({ errorEmail: "" });
+        this.setState({ errorusername: "" });
       }
       if (this.state.password === "") {
         this.setState({ errorPassword: "Please enter a password." });
@@ -57,7 +57,7 @@ export default class Login extends BasePageComponent {
     let data = this.state;
     console.log(data);
 
-    Axios.post("http://localhost:3001/login", data).then((result) => {
+    Axios.post("http://localhost:3000/login", data).then((result) => {
       this.setState({
         success: true,
         error: false,
@@ -66,7 +66,7 @@ export default class Login extends BasePageComponent {
       console.log("My result", result.data);
 
       window.localStorage.setItem("@userdata", JSON.stringify(result.data));
-      this.moveNext("/Home");
+      window.location.href("/Home");
     });
   };
 
@@ -82,19 +82,19 @@ export default class Login extends BasePageComponent {
 
               <div className="form">
                 <div className="form-group">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="username">username</label>
                   <FormControl className="form-control" variant="outlined">
                     <OutlinedInput
-                      id="email"
-                      type="email"
-                      name="email"
+                      id="username"
+                      type="text"
+                      name="username"
                       className="input"
                       variant="outlined"
                       fullWidth
-                      value={this.state.email}
+                      value={this.state.username}
                       onChange={this.textChange}
                     />
-                    <div className="errorMessage">{this.state.errorEmail}</div>
+                    <div className="errorMessage">{this.state.errorusername}</div>
                   </FormControl>
                 </div>
                 <div className="form-group">
