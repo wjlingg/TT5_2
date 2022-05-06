@@ -1,18 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import Routes from './Routes'
-import {
-  BrowserRouter as Router
-} from "react-router-dom";
-import { GlobalContext } from './Globals'
-import React, { Component} from 'react';
+import logo from "./logo.svg";
+import "./App.css";
+import Routes from "./Routes";
+import { BrowserRouter as Router } from "react-router-dom";
+import { GlobalContext } from "./Globals";
+import React, { Component } from "react";
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      appConst: []
-    }
+      appConst: [],
+    };
   }
 
   render() {
@@ -26,6 +24,4 @@ export default class App extends Component {
       </div>
     );
   }
-
 }
-

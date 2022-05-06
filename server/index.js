@@ -41,14 +41,33 @@ const db = mysql.createConnection({
 //   }
 // });
 
-app.get("/project", (req, res) => {
-  db.query("SELECT * FROM project", (error, result) => {
-    if (error) {
-      console.log(error);
-    } else {
-      res.status(200).send(result);
+app.post("/project", (req, res) => {
+  db.query(
+    "SELECT * FROM project WHERE user_id = ?",
+    [req.body.userID],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.status(200).send(result);
+      }
     }
-  });
+  );
+});
+
+app.post("/expense", (req, res) => {
+  console.log(req.body);
+  db.query(
+    "SELECT * FROM expense WHERE project_id = ?",
+    [req.body.userID],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.status(200).send(result);
+      }
+    }
+  );
 });
 
 app.get("/category", (req, res) => {
@@ -74,6 +93,7 @@ app.get("/expense", (req, res) => {
 
 
 // return details of a single user
+
 app.get("/user", (req, res) => {
   db.query("SELECT * FROM user where id=" +req.body.id , (error, result) => {
     if (error) {
