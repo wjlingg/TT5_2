@@ -22,9 +22,11 @@ export default class PageComponent extends Component {
     window.location.href = `/Signup`;
   };
   openHome = () => {
-    window.location.href = `/`;
+    window.location.href = `/Home`;
   };
-
+  openLogin = () => {
+    window.location.href = `/Login`;
+  };
   render() {
     return (
       <>
@@ -45,7 +47,9 @@ export default class PageComponent extends Component {
           <div className="menu">
             <div className="menu-text">Why Us</div>
             <div className="menu-text">About Us</div>
-            <div className="menu-text blue">Log In</div>
+            <div className="menu-text blue" onClick={this.openLogin}>
+              Log In
+            </div>
             <div className="menu-text">
               <ButtonBlue
                 variant="contained"
