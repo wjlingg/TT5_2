@@ -34,18 +34,22 @@ app.post("/project", (req, res) => {
   );
 });
 
-app.get("/category", (req, res) => {
-  db.query("SELECT * FROM category", (error, result) => {
-    if (error) {
-      console.log(error);
-    } else {
-      res.status(200).send(result);
+app.post("/expense", (req, res) => {
+  db.query(
+    "SELECT * FROM expense WHERE project_id = ?",
+    [req.body.userID],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.status(200).send(result);
+      }
     }
-  });
+  );
 });
 
-app.get("/expense", (req, res) => {
-  db.query("SELECT * FROM expense", (error, result) => {
+app.get("/category", (req, res) => {
+  db.query("SELECT * FROM category", (error, result) => {
     if (error) {
       console.log(error);
     } else {

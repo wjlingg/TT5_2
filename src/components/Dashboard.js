@@ -19,10 +19,19 @@ function Dashboard() {
   const userData = { userID: 1, userName: "Hiyoshi" };
 
   const [projectData, setProjectData] = useState([]);
+  const [expenseData, setExpenseData] = useState([]);
 
   const getProjects = () => {
     Axios.post("http://localhost:3001/project", userData).then((result) => {
       setProjectData(result.data);
+      console.log("Retrieved project Data");
+    });
+  };
+
+  const getExpenses = () => {
+    Axios.post("http://localhost:3001/expense", userData).then((result) => {
+      setExpenseData(result.data);
+      console.log("Retrieved Expense Data");
     });
   };
 
@@ -30,7 +39,7 @@ function Dashboard() {
     getProjects();
   }, []);
 
-  const displayData = projectData.map((currentProject) => {
+  const displayProjects = projectData.map((currentProject) => {
     const { id, user_id, name, description, budget } = currentProject;
 
     return (
@@ -57,7 +66,11 @@ function Dashboard() {
                 <Grid item xs={12} md={3}>
                   {/* <div className="item-divider"></div> */}
                   <div className="icon-content">
-                    <IconButton>
+                    <IconButton
+                      onClick={() => {
+                        console.log("Test");
+                      }}
+                    >
                       <VisibilityIcon />
                     </IconButton>
                     <IconButton>
@@ -80,8 +93,8 @@ function Dashboard() {
     <>
       <div>Sample: Current userID: {userData.userID}</div>
       <div className="dashboard">
-        <div>{displayData}</div>
-        <button onClick={() => getProjects()}>Get Data</button>
+        <div>{displayProjects}</div>
+        <button onClick={() => getExpenses()}>Get Data</button>
       </div>
     </>
   );
