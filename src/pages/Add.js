@@ -2,10 +2,11 @@ import BasePageComponent from "../components/BasePageComponent";
 import "./Add.scss";
 import { OutlinedInput } from '@mui/material';
 import FormControl from "@mui/material/FormControl";
-import OutlinedInput from "@mui/material/OutlinedInput";
+// import OutlinedInput from "@mui/material/OutlinedInput";
 import React from 'react';
 import "./Add.scss";
-
+import CircularProgress from "@mui/material/CircularProgress";
+import { ButtonRed } from "../Globals";
 export default class DynamicTable extends React.Component {
     constructor(props) {
         super(props);
