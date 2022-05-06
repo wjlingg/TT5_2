@@ -35,6 +35,7 @@ app.post("/project", (req, res) => {
 });
 
 app.post("/expense", (req, res) => {
+  console.log(req.body);
   db.query(
     "SELECT * FROM expense WHERE project_id = ?",
     [req.body.userID],
