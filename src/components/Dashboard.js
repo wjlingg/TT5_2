@@ -37,16 +37,18 @@ function Dashboard(user) {
     const { id, user_id, name, description, budget } = currentProject;
 
     return (
-      <h3>
-        ID:{id} {user_id} {name} {description} {budget}
-      </h3>
+      <div className="dashboard-data" key={id}>
+        {id} {user_id} {name} {description} {budget}
+      </div>
     );
   });
 
   return (
     <>
       <div>Display Data Test</div>
-      <div>{displayData}</div>
+      <div className="dashboard">
+        <div>{displayData}</div>
+      </div>
     </>
   );
 }
